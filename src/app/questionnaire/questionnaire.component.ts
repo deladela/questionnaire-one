@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {IOptionModel} from '../shared/model/option.model';
 import {IQuestionModel, QuestionModel} from '../shared/model/question.model';
 
@@ -9,8 +9,9 @@ import {IQuestionModel, QuestionModel} from '../shared/model/question.model';
 })
 export class QuestionnaireComponent implements OnInit {
   score = 0;
-  answeredQuestions: IQuestionModel[];
-  questions: IQuestionModel[];
+  answeredQuestions: IQuestionModel[] = [];
+  @Input() questions: IQuestionModel[];
+  @Output() scoreCalculated: EventEmitter<number> = new EventEmitter<number>();
 
   constructor() { }
 
@@ -26,8 +27,15 @@ export class QuestionnaireComponent implements OnInit {
   }
 
   calculateScore() {
-    this.answeredQuestions.filter(question => question.correctOptionId === question.answeredOptionId);
+    this.answeredQuestions.filter((question) => {
+      return question.correctOptionId === question.answeredOptionId;
+    });
     this.score = this.answeredQuestions.length / this.questions.length;
+  }
+
+  showMyScore() {
+    this.calculateScore();
+    this.scoreCalculated.emit(this.score);
   }
 
 }

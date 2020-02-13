@@ -9,6 +9,14 @@ export interface IQuestionModel {
 }
 
 export class QuestionModel implements IQuestionModel {
-  constructor(public questionId?: number, public options?: OptionModel[], public text?: string, public correctOptionId?: number, public answeredOptionId?: number) {
+  constructor(public questionId?: number,
+              public options: OptionModel[] = [],
+              public text?: string,
+              public correctOptionId?: number,
+              public answeredOptionId?: number) {
+  }
+
+  addOption(newOption: OptionModel) {
+    this.options.push(newOption);
   }
 }

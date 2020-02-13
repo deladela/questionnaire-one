@@ -1,1 +1,10 @@
-<div></div>
+<div class="option">
+  <h2 class="question">{{question.text}}</h2>
+    <form class="optionContainer">
+      Pick a topic:
+      <ng-container *ngFor="let option of question.options">
+        <input type="radio" id="option-{{question.questionId}}-{{option.optionId}}" name="option-{{question.questionId}}" value="{{option.optionId}}" (click)="selectOption(option)">
+        <label for="option-{{question.questionId}}-{{option.optionId}}">{{option.text}}</label>
+      </ng-container>
+    </form>
+</div>

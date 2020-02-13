@@ -1,15 +1,15 @@
-import {Component, EventEmitter, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {IOptionModel} from '../shared/model/option.model';
 import {IQuestionModel} from '../shared/model/question.model';
 
 @Component({
-  selector: 'app-option',
+  selector: 'app-question',
   templateUrl: './question.component.html',
   styleUrls: ['./question.component.scss']
 })
 export class QuestionComponent implements OnInit {
-  options: IOptionModel[];
-  optionSelected: EventEmitter<IOptionModel> = new EventEmitter<IOptionModel>();
+  @Input() question: IQuestionModel;
+  @Output() optionSelected: EventEmitter<IOptionModel> = new EventEmitter<IOptionModel>();
 
 
   constructor() { }
