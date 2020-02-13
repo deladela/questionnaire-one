@@ -3,13 +3,13 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { QuestionnaireComponent } from './questionnaire/questionnaire.component';
-import { OptionComponent } from './option/option.component';
+import { QuestionComponent } from './question/question.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     QuestionnaireComponent,
-    OptionComponent
+    QuestionComponent
   ],
   imports: [
     BrowserModule
